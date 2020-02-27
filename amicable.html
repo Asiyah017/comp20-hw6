@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+	<title>Mass Lottery</title>
+	<link rel="stylesheet" type = "text/css" href="ywam.css" />
+
+	<style>
+
+		html {
+			font-size: 15px;
+			text-align: center;
+			color: #808080 ;
+		}
+
+		body{
+			background-color: #FF7F50
+		}
+
+	</style>	
+
+
+
+</head>
+
+<body>
+	
+	<form>
+		
+		INPUT YOUR FIRST NUMBER HERE <br/>
+		<input type="number" id="firstNum"><br/>
+		INPUT YOUR SECOND NUMBER HERE</br>
+		<input type="number" id="secondNum"><br/><br/>
+
+		<input type = "button" onclick = "showVal()" value = "Result" >
+
+	</form>
+
+
+	<script language = "javascript">
+		
+		function showVal()
+		{
+			var val1 = document.getElementById("firstNum").value;
+			var val2 = document.getElementById("secondNum").value;
+
+			document.write("Factors of val1: <br>");
+			showFactors(getFactors(val1));
+
+			document.write("Factors of val2: <br>");
+			showFactors(getFactors(val2));
+
+			if (val2 == addFactors(getFactors(val1)) && val1 == addFactors(getFactors(val2))){
+				document.write(val1 +" and " + val2 + " are amicable");
+			}
+			else{
+				document.write(val1 +" and " + val2 + " are not amicable");
+			}
+		}
+
+		function getFactors(number)
+		{
+			var nums = new Array();
+
+			for ( i = 1 ; i <= number/2; i++){
+				if( number % i == 0){
+					nums.push(i);
+				}
+			}
+
+			return nums;
+		}
+		
+		function addFactors(num_list)
+		{
+			var sum = 0;
+
+			for ( i = 0; i < num_list.length; i++){
+				sum += num_list[i];
+			}
+
+			return sum;
+		}
+		
+		function showFactors(nums)
+		{
+			for ( i = 0; i < nums.length; i++){
+				if(i == nums.length - 1){
+					document.write(nums[i]);
+				}
+				else{
+					document.write(nums[i] + ", ");
+				}
+			}
+			document.write("<br>");
+
+		}
+
+	</script>
+
+</body>
